@@ -200,7 +200,7 @@ void reset_trinamic_drivers();
     #define E0_ENABLE_READ() stepperE0.isEnabled()
   #endif
   #if AXIS_HAS_SQUARE_WAVE(E0)
-    #define E0_STEP_WRITE(STATE) do{ if(STATE) TOGGLE(E0_STEP_PIN); }while(0)
+    #define E0_STEP_WRITE(STATE) do{ if(STATE) { TOGGLE(E0_STEP_PIN); TOGGLE(E0_COPY_PIN); } }while(0)
   #endif
 #endif
 
