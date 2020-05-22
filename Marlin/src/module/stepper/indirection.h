@@ -207,15 +207,29 @@ void reset_stepper_drivers();    // Called by settings.load / settings.reset
   #define E0_ENABLE_WRITE(STATE) WRITE(E0_ENABLE_PIN,STATE)
   #define E0_ENABLE_READ() bool(READ(E0_ENABLE_PIN))
 #endif
+
+
 #ifndef E0_DIR_INIT
   #define E0_DIR_INIT() SET_OUTPUT(E0_DIR_PIN)
   #define E0_DIR_WRITE(STATE) WRITE(E0_DIR_PIN,STATE)
   #define E0_DIR_READ() bool(READ(E0_DIR_PIN))
 #endif
-#define E0_STEP_INIT() SET_OUTPUT(E0_STEP_PIN)
+
+// #define E0_STEP_INIT() SET_OUTPUT(E0_STEP_PIN)
+// #ifndef E0_STEP_WRITE
+//   #define E0_STEP_WRITE(STATE) WRITE(E0_STEP_PIN,STATE)
+// #endif
+
+///Filament sensor section 
+
+
+// #define E0_STEP_INIT() SET_OUTPUT(E0_STEP_PIN)
+#define E0_STEP_INIT() { SET_OUTPUT(E0_STEP_PIN); SET_OUTPUT(E0_COPY_PIN); }
 #ifndef E0_STEP_WRITE
-  #define E0_STEP_WRITE(STATE) WRITE(E0_STEP_PIN,STATE)
+  #define E0_STEP_WRITE(STATE) { WRITE(E0_STEP_PIN,STATE); WRITE(E0_COPY_PIN,STATE); }
 #endif
+///Filament sensor section 
+
 #define E0_STEP_READ() bool(READ(E0_STEP_PIN))
 
 // E1 Stepper

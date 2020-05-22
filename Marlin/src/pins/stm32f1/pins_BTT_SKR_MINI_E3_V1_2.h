@@ -27,6 +27,10 @@
 
 #define NEOPIXEL_PIN                       PC7    // LED driving pin
 
+#define E0_COPY_PIN                        PC15 // Copy pin for the filaments sensor
+
+#define FIL_RUNOUT_PIN                     PC12   // E0-STOP
+
 /**
  * TMC2208/TMC2209 stepper drivers
  */
